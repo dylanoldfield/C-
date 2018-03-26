@@ -1,44 +1,50 @@
-#include <QCoreApplication>
+#include "person.h"
+#include "student.h"
 #include <iostream>
-using namespace std;
+using namespace week4;
 
 int main(int argc, char* argv[])
 {
-    int* pointer1 = new int(6);
-    int integer1 = 9;
-    int* pointer2 = &integer1;
-    int* pointer3 = pointer2;
+//    int* pointer1 = new int(6);
+//    int integer1 = 9;
+//    int* pointer2 = &integer1;
+//    int* pointer3 = pointer2;
 
-    cout << integer1 << ", " << *pointer1 << ", "
-        << *pointer2 << ", " << *pointer3 << endl;
-    *pointer3 += 3;
+//    cout << integer1 << ", " << *pointer1 << ", "
+//        << *pointer2 << ", " << *pointer3 << endl;
+//    *pointer3 += 3;
 
-    cout << integer1 << endl;
-    *pointer2 = *pointer1 + *pointer3;
+//    cout << integer1 << endl;
+//    *pointer2 = *pointer1 + *pointer3;
 
-    cout << integer1 << ", " << *pointer1 << ", "
-        << *pointer2 << ", " << *pointer3 << endl;
+//    cout << integer1 << ", " << *pointer1 << ", "
+//        << *pointer2 << ", " << *pointer3 << endl;
 
-    delete pointer1;
+//    delete pointer1;
 
-    pointer1 = new int(1);
-    pointer2 = new int(2);
-    pointer3 = new int(3);
+//    pointer1 = new int(1);
+//    pointer2 = new int(2);
+//    pointer3 = new int(3);
 
-    cout << *pointer1 * *pointer2 * *pointer3 << endl;
-    cout << *pointer1 - *pointer2 + *pointer3 << endl;
+//    cout << *pointer1 * *pointer2 * *pointer3 << endl;
+//    cout << *pointer1 - *pointer2 + *pointer3 << endl;
 
-    *pointer1 = *pointer3 - *pointer2 - *pointer1;
-    *pointer2 = *pointer3 - *pointer2 + *pointer1;
-    *pointer3 = *pointer3 + *pointer2 - *pointer1;
+//    *pointer1 = *pointer3 - *pointer2 - *pointer1;
+//    *pointer2 = *pointer3 - *pointer2 + *pointer1;
+//    *pointer3 = *pointer3 + *pointer2 - *pointer1;
 
-    cout << *pointer1 << endl;
-    cout << *pointer2 << endl;
-    cout << *pointer3 << endl;
+//    cout << *pointer1 << endl;
+//    cout << *pointer2 << endl;
+//    cout << *pointer3 << endl;
 
-    delete pointer1;
-    delete pointer2;
-    delete pointer3;
+//    delete pointer1;
+//    delete pointer2;
+//    delete pointer3;
 
-    return 0;
+//    return 0;
+
+    Person *student = new Student("Bob", "Down", Date(17,8,1988), "Doctor of Philosophy");
+        std::cout << student->getRecord() << std::endl;
+        delete student;
+        return 0;
 }

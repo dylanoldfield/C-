@@ -50,8 +50,10 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Tutorial3/main.cpp 
-OBJECTS       = main.o
+SOURCES       = ../Tutorial3/main.cpp \
+		../Tutorial3/date.cpp 
+OBJECTS       = main.o \
+		date.o
 DIST          = /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/qdevice.pri \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/device_config.prf \
@@ -185,6 +187,7 @@ DIST          = /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/spec_pre.pr
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/qt_config.prf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/spec_post.prf \
+		../Tutorial3/.qmake.stash \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/toolchain.prf \
@@ -209,7 +212,10 @@ DIST          = /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/spec_pre.pr
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/exceptions.prf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/yacc.prf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/lex.prf \
-		../Tutorial3/Tutorial3.pro  ../Tutorial3/main.cpp
+		../Tutorial3/Tutorial3.pro ../Tutorial3/date.h \
+		../Tutorial3/person.h \
+		../Tutorial3/student.h ../Tutorial3/main.cpp \
+		../Tutorial3/date.cpp
 QMAKE_TARGET  = Tutorial3
 DESTDIR       = 
 TARGET        = Tutorial3
@@ -359,6 +365,7 @@ Makefile: ../Tutorial3/Tutorial3.pro /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/qt_config.prf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/toolchain.prf \
@@ -519,6 +526,7 @@ Makefile: ../Tutorial3/Tutorial3.pro /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs
 /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/qt_config.prf:
 /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/macx-clang/qmake.conf:
 /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/exclusive_builds.prf:
 /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/mac/sdk.prf:
 /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/toolchain.prf:
@@ -560,7 +568,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Tutorial3/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Tutorial3/date.h ../Tutorial3/person.h ../Tutorial3/student.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Tutorial3/main.cpp ../Tutorial3/date.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -570,6 +579,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -607,9 +617,14 @@ compiler_clean: compiler_moc_predefs_clean
 
 ####### Compile
 
-main.o: ../Tutorial3/main.cpp /Users/dylan/Qt5.9.4/5.9.4/clang_64/lib/QtCore.framework/Headers/QCoreApplication \
-		/Users/dylan/Qt5.9.4/5.9.4/clang_64/lib/QtCore.framework/Headers/qcoreapplication.h
+main.o: ../Tutorial3/main.cpp ../Tutorial3/person.h \
+		../Tutorial3/Date.h \
+		../Tutorial3/student.h \
+		../Tutorial3/Person.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Tutorial3/main.cpp
+
+date.o: ../Tutorial3/date.cpp ../Tutorial3/date.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o date.o ../Tutorial3/date.cpp
 
 ####### Install
 
