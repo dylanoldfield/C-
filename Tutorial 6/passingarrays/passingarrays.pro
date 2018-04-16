@@ -16,4 +16,5 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     passbyreference.cpp \
-    array.cpp
+    array.cpp \
+    multipleinheritance.cpp

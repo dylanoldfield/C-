@@ -52,10 +52,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../passingarrays/main.cpp \
 		../passingarrays/passbyreference.cpp \
-		../passingarrays/array.cpp 
+		../passingarrays/array.cpp \
+		../passingarrays/multipleinheritance.cpp 
 OBJECTS       = main.o \
 		passbyreference.o \
-		array.o
+		array.o \
+		multipleinheritance.o
 DIST          = /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/qdevice.pri \
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/device_config.prf \
@@ -216,7 +218,8 @@ DIST          = /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/spec_pre.pr
 		/Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/lex.prf \
 		../passingarrays/passingarrays.pro  ../passingarrays/main.cpp \
 		../passingarrays/passbyreference.cpp \
-		../passingarrays/array.cpp
+		../passingarrays/array.cpp \
+		../passingarrays/multipleinheritance.cpp
 QMAKE_TARGET  = passingarrays
 DESTDIR       = 
 TARGET        = passingarrays
@@ -569,7 +572,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/dylan/Qt5.9.4/5.9.4/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../passingarrays/main.cpp ../passingarrays/passbyreference.cpp ../passingarrays/array.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../passingarrays/main.cpp ../passingarrays/passbyreference.cpp ../passingarrays/array.cpp ../passingarrays/multipleinheritance.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -625,6 +628,9 @@ passbyreference.o: ../passingarrays/passbyreference.cpp
 
 array.o: ../passingarrays/array.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o array.o ../passingarrays/array.cpp
+
+multipleinheritance.o: ../passingarrays/multipleinheritance.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o multipleinheritance.o ../passingarrays/multipleinheritance.cpp
 
 ####### Install
 
