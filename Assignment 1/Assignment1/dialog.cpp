@@ -8,7 +8,7 @@ Dialog::Dialog(QWidget *parent)
         ui->setupUi(this);
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(nextFrame()));
-        timer->start(10000);
+        timer->start(30);
 
 //        this->update();
 
